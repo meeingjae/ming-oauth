@@ -27,5 +27,9 @@ public class MingOauthApplication extends WebSecurityConfigurerAdapter {
                         new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)
                 ))
                 .oauth2Login();
+
+        // require POST method
+        http.logout(l -> l.logoutSuccessUrl("/")
+                .permitAll());
     }
 }
